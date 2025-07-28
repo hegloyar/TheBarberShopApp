@@ -5,3 +5,4 @@ jdk:
 
 script:
  - mvn clean install
+ - mvn exec:java
