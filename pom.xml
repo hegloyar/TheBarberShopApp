@@ -6,7 +6,6 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
     
-    
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>17</maven.compiler.source>
@@ -25,21 +24,16 @@
         </plugin>
 
         <!-- Plugin para ejecutar el main -->
-        <plugin>
-            <groupId>org.codehaus.mojo</groupId>
-            <artifactId>exec-maven-plugin</artifactId>
-            <version>3.1.0</version>
-            <executions>
-                <execution>
-                    <goals>
-                        <goal>java</goal>
-                    </goals>
-                </execution>
-            </executions>
-            <configuration>
-                <mainClass>${exec.mainClass}</mainClass>
-            </configuration>
-        </plugin>
+<plugin>
+    <groupId>org.codehaus.mojo</groupId>
+    <artifactId>exec-maven-plugin</artifactId>
+    <version>3.1.0</version>
+    <configuration>
+        <mainClass>hg.barber.shop.app.BarberShopApp</mainClass>
+    </configuration>
+</plugin>
+
+
     </plugins>
 </build>
     
