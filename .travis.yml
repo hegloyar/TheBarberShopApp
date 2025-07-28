@@ -4,6 +4,4 @@ jdk:
   - openjdk17
 
 script:
-  - mkdir bin
-  - javac -d bin src/Principal.java
-  - java -cp bin Principal
+ - mvn clean install
