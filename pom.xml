@@ -6,7 +6,45 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
     
-    <dependencies>
+    
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <exec.mainClass>hg.barber.shop.app.BarberShopApp</exec.mainClass>
+    </properties>
+    
+    
+    <build>
+    <plugins>
+        <!-- Plugin para compilar -->
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.10.1</version>
+        </plugin>
+
+        <!-- Plugin para ejecutar el main -->
+        <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>exec-maven-plugin</artifactId>
+            <version>3.1.0</version>
+            <executions>
+                <execution>
+                    <goals>
+                        <goal>java</goal>
+                    </goals>
+                </execution>
+            </executions>
+            <configuration>
+                <mainClass>${exec.mainClass}</mainClass>
+            </configuration>
+        </plugin>
+    </plugins>
+</build>
+    
+    
+        <dependencies>
     <!-- SQLite JDBC Driver -->
     <dependency>
         <groupId>org.xerial</groupId>
@@ -22,11 +60,6 @@
         <scope>test</scope>
     </dependency>
 </dependencies>
-
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
-        <exec.mainClass>hg.barber.shop.app.BarberShopApp</exec.mainClass>
-    </properties>
+    
+    
 </project>
