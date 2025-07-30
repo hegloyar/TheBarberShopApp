@@ -16,14 +16,15 @@ import java.sql.SQLException;
 public class ClienteDAO {
     
 public static boolean insertarCliente(Cliente cliente) {
-        String sql = "INSERT INTO clientes(nombre, telefono, notas) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO clientes(nombre, telefono, correo, notas) VALUES (?, ?, ?, ?)";
 
         try (Connection conn = ConexionSQLite.conectar();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
-            pstmt.setString(1, cliente.getNombre());
-            pstmt.setString(2, cliente.getTelefono());
-            pstmt.setString(3, cliente.getNotas());
+                pstmt.setString(1, cliente.getNombre());
+                pstmt.setString(2, cliente.getTelefono());
+                pstmt.setString(3, cliente.getCorreo());
+                pstmt.setString(4, cliente.getNotas());
 
             pstmt.executeUpdate();
             return true;
