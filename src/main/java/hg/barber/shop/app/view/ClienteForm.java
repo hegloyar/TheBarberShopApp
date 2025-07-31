@@ -3,6 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package hg.barber.shop.app.view;
+import hg.barber.shop.app.controller.ClienteController;
+import javax.swing.JOptionPane;
+
+
 
 /**
  *
@@ -161,23 +165,57 @@ public class ClienteForm extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCorreoActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        // TODO add your handling code here:
+    String nombre = txtNombre.getText();
+    String telefono = txtTelefono.getText();
+    String correo = txtCorreo.getText();
+    String notas = txtNotas.getText();
+
+    boolean exito = ClienteController.guardarCliente(nombre, telefono, correo, notas);
+
+    if (exito) {
+        JOptionPane.showMessageDialog(this, "Cliente guardado correctamente.");
+    } else {
+        JOptionPane.showMessageDialog(this, "No se pudo guardar el cliente. Verifica los campos.");
+    }
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
-        // TODO add your handling code here:
+    txtNombre.setText("");
+    txtTelefono.setText("");
+    txtCorreo.setText("");
+    txtNotas.setText("");
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        // TODO add your handling code here:
+    String nombre = txtNombre.getText();
+
+    int confirm = JOptionPane.showConfirmDialog(this, "¿Eliminar cliente?", "Confirmación", JOptionPane.YES_NO_OPTION);
+    if (confirm == JOptionPane.YES_OPTION) {
+        boolean eliminado = ClienteController.eliminarClientePorNombre(nombre);
+        if (eliminado) {
+            JOptionPane.showMessageDialog(this, "Cliente eliminado.");
+            btnLimpiarActionPerformed(null);
+        } else {
+            JOptionPane.showMessageDialog(this, "No se pudo eliminar el cliente.");
+        }
+    }
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        // TODO add your handling code here:
+    String nombre = txtNombre.getText();
+    var cliente = ClienteController.buscarClientePorNombre(nombre);
+
+    if (cliente != null) {
+        txtTelefono.setText(cliente.getTelefono());
+        txtCorreo.setText(cliente.getCorreo());
+        txtNotas.setText(cliente.getNotas());
+    } else {
+        JOptionPane.showMessageDialog(this, "Cliente no encontrado.");
+    }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
-        // TODO add your handling code here:
+    this.dispose(); // Cierra solo esta ventana
     }//GEN-LAST:event_btnVolverActionPerformed
 
     /**

@@ -25,5 +25,11 @@ public static Connection conectar() {
         }
         return conn;
     }
+
+
+public static Connection getConnection() throws SQLException {
+    return conectar(); // O el método que tú ya tienes para abrir conexión.
+}
+
        
 }
