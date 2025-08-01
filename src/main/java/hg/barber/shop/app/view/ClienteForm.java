@@ -187,20 +187,17 @@ public class ClienteForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-    String nombre = txtNombre.getText();
+    String nombre = txtNombre.getText().trim();
 
-    int confirm = JOptionPane.showConfirmDialog(this, "¿Eliminar cliente?", "Confirmación", JOptionPane.YES_NO_OPTION);
-    if (confirm == JOptionPane.YES_OPTION) {
-        boolean eliminado = ClienteController.eliminarClientePorNombre(nombre);
-        if (eliminado) {
-            JOptionPane.showMessageDialog(this, "Cliente eliminado.");
-            btnLimpiarActionPerformed(null);
-        } else {
-            JOptionPane.showMessageDialog(this, "No se pudo eliminar el cliente.");
-        }
+    if (ClienteController.eliminarClientePorNombre(nombre)) {
+        JOptionPane.showMessageDialog(this, "Cliente eliminado correctamente.");
+        limpiarCampos();
+    } else {
+        JOptionPane.showMessageDialog(this, "No se pudo eliminar el cliente. Verifica el nombre.");
     }
     }//GEN-LAST:event_btnEliminarActionPerformed
 
+    
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
     String nombre = txtNombre.getText();
     var cliente = ClienteController.buscarClientePorNombre(nombre);
@@ -253,6 +250,15 @@ public class ClienteForm extends javax.swing.JFrame {
         });
     }
 
+    private void limpiarCampos() {
+    txtNombre.setText("");
+    txtTelefono.setText("");
+    txtCorreo.setText("");
+    txtNotas.setText("");
+}
+    
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnEliminar;

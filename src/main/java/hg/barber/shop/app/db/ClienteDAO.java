@@ -11,6 +11,9 @@ import java.sql.SQLException;
 import java.sql.ResultSet;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 
 
 
@@ -68,17 +71,16 @@ public static Cliente buscarClientePorNombre(String nombre) {
 
 public static boolean eliminarClientePorNombre(String nombre) {
     String sql = "DELETE FROM clientes WHERE nombre = ?";
-
-    try (Connection conn = ConexionSQLite.conectar();
-         PreparedStatement pstmt = conn.prepareStatement(sql)) {
-
-        pstmt.setString(1, nombre);
-        int filasAfectadas = pstmt.executeUpdate();
-
-        return filasAfectadas > 0; // Devuelve true si al menos una fila fue eliminada.
+    try (Connection conn = ConexionSQLite.getConnection();
+         PreparedStatement stmt = conn.prepareStatement(sql)) {
+        
+        stmt.setString(1, nombre);
+        int rowsAffected = stmt.executeUpdate();
+        return rowsAffected > 0;
 
     } catch (SQLException e) {
-        System.out.println("Error al eliminar cliente: " + e.getMessage());
+        Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, e);
+
         return false;
     }
 }
