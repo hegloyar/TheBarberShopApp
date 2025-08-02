@@ -11,14 +11,32 @@ import hg.barber.shop.app.db.ClienteDAO;
  */
 public class ClienteController {
  
-    public static boolean guardarCliente(String nombre, String telefono, String notas) {
+ public static boolean guardarCliente(String nombre, String telefono, String correo, String notas) {
         if (nombre == null || nombre.trim().isEmpty()) {
             System.out.println("El nombre es obligatorio.");
             return false;
         }
 
-        Cliente c = new Cliente(nombre, telefono, notas);
+        Cliente c = new Cliente(nombre.trim(), telefono.trim(), correo.trim(), notas.trim());
         return ClienteDAO.insertarCliente(c);
     }
-    
+
+    public static Cliente buscarClientePorNombre(String nombre) {
+        if (nombre == null || nombre.trim().isEmpty()) {
+            return null;
+        }
+
+        return ClienteDAO.buscarClientePorNombre(nombre.trim());
+    }
+
+    public static boolean eliminarClientePorNombre(String nombre) {
+       if (nombre == null || nombre.trim().isEmpty()) {
+        System.out.println("El nombre es obligatorio.");
+        return false;
+       }
+      return ClienteDAO.eliminarClientePorNombre(nombre.trim());
 }
+
+
+    }
+

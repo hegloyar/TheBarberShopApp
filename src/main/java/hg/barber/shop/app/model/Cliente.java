@@ -12,13 +12,15 @@ public class Cliente {
     private int id;
     private String nombre;
     private String telefono;
+    private String correo;
     private String notas;
 
     public Cliente() { }
 
-    public Cliente(String nombre, String telefono, String notas) {
+    public Cliente(String nombre, String telefono, String correo, String notas) {
         this.nombre = nombre;
         this.telefono = telefono;
+        this.correo = correo;
         this.notas = notas;
     }
 
@@ -31,7 +33,12 @@ public class Cliente {
 
     public String getTelefono() { return telefono; }
     public void setTelefono(String telefono) { this.telefono = telefono; }
+    
+    public String getCorreo() { return correo; }
+    public void setCorreo(String correo) { this.correo = correo; }
 
     public String getNotas() { return notas; }
     public void setNotas(String notas) { this.notas = notas; }
 }
+
+
