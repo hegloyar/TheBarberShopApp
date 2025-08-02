@@ -3,18 +3,25 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package hg.barber.shop.app.view;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author galva
  */
 public class LoginForm extends javax.swing.JFrame {
-
+ 
     /**
      * Creates new form LoginForm
      */
     public LoginForm() {
-        initComponents();
+    initComponents();
+    this.setSize(400, 200); // Ajusta el tamaño de la ventana
+    this.setLocationRelativeTo(null); // Centrar
+    txtUsuario.setPreferredSize(new java.awt.Dimension(200, 25));
+    txtContrasena.setPreferredSize(new java.awt.Dimension(200, 25));
+    btnIngresar.setPreferredSize(new java.awt.Dimension(100, 25));
+    this.pack(); // Reorganiza layout con los nuevos tamaños
     }
 
     /**
@@ -26,21 +33,88 @@ public class LoginForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        txtUsuario = new javax.swing.JTextField();
+        btnIngresar = new javax.swing.JButton();
+        txtContrasena = new javax.swing.JPasswordField();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        txtUsuario.setText("Usuario");
+        txtUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtUsuarioActionPerformed(evt);
+            }
+        });
+
+        btnIngresar.setText("Ingresar");
+        btnIngresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIngresarActionPerformed(evt);
+            }
+        });
+
+        txtContrasena.setText("jPasswordField1");
+        txtContrasena.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtContrasenaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(txtContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(23, 23, 23)
+                        .addComponent(btnIngresar))
+                    .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(132, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(81, 81, 81)
+                .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(49, 49, 49)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnIngresar)
+                    .addComponent(txtContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(114, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtUsuarioActionPerformed
+
+    private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
+    String usuario = txtUsuario.getText();
+    String contrasena = new String(txtContrasena.getPassword());
+
+    if (usuario.isEmpty() || contrasena.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Por favor completa ambos campos.", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    if (usuario.equals("admin") && contrasena.equals("1234")) {
+        JOptionPane.showMessageDialog(this, "Inicio de sesión exitoso", "Bienvenido", JOptionPane.INFORMATION_MESSAGE);
+        dispose(); // Cierra login
+        new MainForm().setVisible(true); // Abre el menú principal
+    } else {
+        JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos.", "Acceso denegado", JOptionPane.ERROR_MESSAGE);
+    }
+        
+    }//GEN-LAST:event_btnIngresarActionPerformed
+
+    private void txtContrasenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContrasenaActionPerformed
+        btnIngresar.doClick(); // Simula clic en "Ingresar"
+    }//GEN-LAST:event_txtContrasenaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -77,6 +151,12 @@ public class LoginForm extends javax.swing.JFrame {
         });
     }
 
+    
+  
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnIngresar;
+    private javax.swing.JPasswordField txtContrasena;
+    private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }
