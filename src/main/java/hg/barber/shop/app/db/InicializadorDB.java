@@ -14,14 +14,16 @@ import java.sql.Statement;
 public class InicializadorDB {
     
     public static void crearTablas() {
-        String sqlClientes = """
-            CREATE TABLE IF NOT EXISTS clientes (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                nombre TEXT NOT NULL,
-                telefono TEXT,
-                notas TEXT
-            );
-        """;
+String sqlClientes = """
+    CREATE TABLE IF NOT EXISTS clientes (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        nombre TEXT NOT NULL,
+        telefono TEXT,
+        correo TEXT,
+        notas TEXT
+        
+    );
+""";
 
         try (Connection conn = ConexionSQLite.conectar();
              Statement stmt = conn.createStatement()) {
