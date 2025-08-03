@@ -7,7 +7,7 @@ package hg.barber.shop.app;
 import hg.barber.shop.app.db.InicializadorDB;
 import hg.barber.shop.app.view.LoginForm;
 import hg.barber.shop.app.view.MainForm;
-
+//Prueba
 /**
  *
  * @author galva
