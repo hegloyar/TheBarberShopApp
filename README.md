@@ -70,13 +70,13 @@ b. Configuración de requerimientos
 6. Uso  
 
 a. Usuario final
-•	Inicio de sesión: Login con credenciales existentes  
-•	Agendar cita: Seleccionar cliente, fecha y hora disponibles  
-•	Registrar cliente: Captura de datos personales  
+•	Inicio de sesión: Login con credenciales existentes    
+•	Agendar cita: Seleccionar cliente, fecha y hora disponibles    
+•	Registrar cliente: Captura de datos personales    
 
-b. Usuario administrador  
-•	Acceso a funcionalidades completas  
-•	Puede modificar registros de clientes y citas  
+b. Usuario administrador    
+•	Acceso a funcionalidades completas    
+•	Puede modificar registros de clientes y citas    
 
 7. Contribución  
 
