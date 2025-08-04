@@ -97,7 +97,4 @@ git push origin feature/nueva-funcionalidad
 b. Notas
 •	Esperar revisión y autorización de Pull Request  
 
-8. Roadmap  
-•	
-
 Para más información, consulta la Wiki del repositorio
