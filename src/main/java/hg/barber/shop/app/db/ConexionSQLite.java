@@ -4,6 +4,8 @@
  */
 package hg.barber.shop.app.db;
 
+import java.io.File;
+import java.net.URISyntaxException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -14,21 +16,39 @@ import java.sql.SQLException;
  */
 public class ConexionSQLite {
        
-public static Connection conectar() {
+    public static Connection conectar() {
         Connection conn = null;
+
         try {
-            String url = "jdbc:sqlite:barbershop.db";
+            // Obtener el path del .jar en tiempo de ejecución
+            String jarPath = new File(ConexionSQLite.class
+                    .getProtectionDomain()
+                    .getCodeSource()
+                    .getLocation()
+                    .toURI())
+                    .getParent();
+
+            // Ruta absoluta hacia el archivo barbershop.db
+            String dbPath = jarPath + File.separator + "barbershop.db";
+
+            // Conexión a SQLite
+            String url = "jdbc:sqlite:" + dbPath;
             conn = DriverManager.getConnection(url);
-            System.out.println("Conexión a SQLite establecida.");
+
+        } catch (URISyntaxException e) {
+            System.out.println("Error de URI: " + e.getMessage());
         } catch (SQLException e) {
-            System.out.println("Error de conexión: " + e.getMessage());
+            System.out.println("Error SQL: " + e.getMessage());
+        } catch (Exception e) {
+            System.out.println("Error inesperado: " + e.getMessage());
         }
+
         return conn;
     }
 
 
 public static Connection getConnection() throws SQLException {
-    return conectar(); // O el método que tú ya tienes para abrir conexión.
+    return conectar(); // 
 }
 
        

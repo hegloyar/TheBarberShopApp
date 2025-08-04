@@ -48,7 +48,7 @@ public static boolean insertarCliente(Cliente cliente) {
 public static Cliente buscarClientePorNombre(String nombre) {
     Cliente clienteEncontrado = null;
 
-    try (Connection conn = ConexionSQLite.getConnection();
+    try (Connection conn = ConexionSQLite.conectar();
          PreparedStatement stmt = conn.prepareStatement("SELECT * FROM clientes WHERE nombre = ?")) {
         
         stmt.setString(1, nombre);
@@ -71,7 +71,7 @@ public static Cliente buscarClientePorNombre(String nombre) {
 
 public static boolean eliminarClientePorNombre(String nombre) {
     String sql = "DELETE FROM clientes WHERE nombre = ?";
-    try (Connection conn = ConexionSQLite.getConnection();
+    try (Connection conn = ConexionSQLite.conectar();
          PreparedStatement stmt = conn.prepareStatement(sql)) {
         
         stmt.setString(1, nombre);
